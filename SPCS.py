@@ -76,7 +76,7 @@ projFC = r"{0}\projFC".format(aprx.defaultGeodatabase)
 
 # Write one PDF page for each place in the sorted list
 pageCount = 0
-for Count, placeName in enumerate(placesSortedByNameList):
+for count, placeName in enumerate(placesSortedByNameList):
     pageCount +=1
     xCoord,yCoord = placesCoordsDict[placeName]
     point_geom = arcpy.PointGeometry(arcpy.Point(float(xCoord),float(yCoord)))
@@ -92,12 +92,12 @@ for Count, placeName in enumerate(placesSortedByNameList):
 
     # warn and skip if no zone matched
     if spcsZone is None:
-        print(f"{Count + 1}: WARNING:{placeName} not within CA Zones layer")
+        print(f"{count + 1}: WARNING:{placeName} not within CA Zones layer")
         pageCount -= 1
         continue
 
     srSPCS = arcpy.SpatialReference(srString)
-    print("{2}: {0} is in CA StatePlane Zone {1}".format(placeName, spcsZone, Count + 1))
+    print("{2}: {0} is in CA StatePlane Zone {1}".format(placeName, spcsZone, count + 1))
 
     arcpy.management.CreateFishnet(geogFC,
                                    "{0} {1}".format(xCoord - 0.25, yCoord - 0.25),
@@ -127,8 +127,8 @@ for Count, placeName in enumerate(placesSortedByNameList):
         titleText.text = placeName
 
         # Export PDF for this country's page
-        lyt.exportToPDF(r"C:\project\PDFs\sheet{0}.pdf".format(Count))
-        pdfDoc.appendPages(r"C:\project\PDFs\sheet{0}.pdf".format(Count))
+        lyt.exportToPDF(r"C:\project\PDFs\sheet{0}.pdf".format(count))
+        pdfDoc.appendPages(r"C:\project\PDFs\sheet{0}.pdf".format(count))
 
 print(f"{pageCount} pages exported")
 pdfDoc.saveAndClose()
