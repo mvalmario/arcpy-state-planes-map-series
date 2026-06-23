@@ -8,3 +8,9 @@ This project was adapted from an ArcPy automation exercise in the Udemy course *
 For this project, the workflow was modified for California's State Plane Coordinate System (SPCS). Instead of calculating a projection zone from longitude, the script compares location point to California State Planes Polygon to assign an appropriate California State Plane zone, updates map frames and layout elements, and exports a multi-page PDF atlas of California cities.
 
 The project demonstrates ArcPy map automation, spatial reference management, layout manipulation, and batch PDF export in ArcGIS Pro.
+
+## Output/Images files
+
+SPCSZones.pdf shows a sample output of the map series.
+
+SPCSZones_Pro.png shows the layout, and layout elements within the map ArcPro Project.
